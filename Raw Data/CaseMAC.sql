@@ -6,7 +6,7 @@ from
 
 (Select   ihp.CaseId AS CaseId, ihp.age as age, CVDH.[LastUpdate] as dt,Sequence as seq 
 	FROM
-	(SELECT [CaseId],[Age] FROM [IHPStudy].[dbo].[CaseBaseData]-- where  CaseId not in (SELECT distinct [CaseID] FROM [IHPStudy].[dbo].[MACv1])
+	(SELECT [CaseId],[Age] FROM [IHPStudy].[dbo].[CaseBaseData]
 	) ihp
 INNER JOIN (Select Case_ID, [LastUpdate], Sequence from [IHPStudy].[dbo].[CaseVitalsData] WHERE VitalData_ID=1607 ) CVDH on ihp.CaseId= CVDH.Case_ID
 ) v
