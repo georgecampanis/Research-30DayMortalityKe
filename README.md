@@ -3,6 +3,6 @@ This repository has all the sql code used to extract, collate, clean and export 
 
 **This repository is organized as follows:**
 
-1. Raw Data folder - contains all the code used to extract the raw data from the AIMS (Innovian)
+1. Data Extraction folder - contains all the code used to extract the raw data from the AIMS (Innovian)
 2. Artifact Removal folder - contains the code used to clean, aggregate, and collate the raw data (MAC, MAP, Temp, SpO2 etc)
 3. Export folder - contains the code used to de-identify and connect to StudyId and export to csv for study 
