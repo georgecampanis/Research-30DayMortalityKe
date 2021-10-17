@@ -1,0 +1,10 @@
+Update Map Set sbp_Below20perc_PreOpPreAdmit_Baseline= null
+Update Map Set map_Below20perc_PreOpPreAdmit_Baseline= null
+Update Map Set sbp_Below20perc_Innov_Baseline= null
+Update Map Set map_Below20perc_Innov_Baseline=null
+
+
+Update Map Set sbp_Below20perc_PreOpPreAdmit_Baseline=1 From map m Inner Join ( SELECT ABS(SBP - [SBP_HSM_PreopPreAdmitMin])/[SBP_HSM_PreopPreAdmitMin] as diffPerc,ABS(SBP - [SBP_HSM_PreopPreAdmitMin])as diffFromBaseline ,[SBP] ,[SBP_HSM_PreopPreAdmitMin], caseId,DT FROM [IHPStudy].[dbo].[MAP] where (ABS(SBP - [SBP_HSM_PreopPreAdmitMin])/[SBP_HSM_PreopPreAdmitMin] ) <0.8 and [SBP_HSM_PreopPreAdmitMin]>0 and [nxtTimeDiffSecs]<=300 and sbp is not null)b On m.caseId=b.caseId and m.DT=b.DT; 
+Update Map Set map_Below20perc_PreOpPreAdmit_Baseline=1 From map m Inner Join ( SELECT ABS(map - [map_HSM_PreopPreAdmitMin])/[map_HSM_PreopPreAdmitMin] as diffPerc,ABS(map - [map_HSM_PreopPreAdmitMin])as diffFromBaseline ,[map] ,[map_HSM_PreopPreAdmitMin], caseId,DT FROM [IHPStudy].[dbo].[MAP] where (ABS(map - [map_HSM_PreopPreAdmitMin])/[map_HSM_PreopPreAdmitMin] ) <0.8 and [map_HSM_PreopPreAdmitMin]>0 and [nxtTimeDiffSecs]<=300 and map is not null)b On m.caseId=b.caseId and m.DT=b.DT; 
+Update Map Set sbp_Below20perc_Innov_Baseline=1 From map m Inner Join ( SELECT ABS(SBP - [firstInnvSBP])/[firstInnvSBP] as diffPerc,ABS(SBP - [firstInnvSBP])as diffFromBaseline ,[SBP] ,[firstInnvSBP], caseId,DT FROM [IHPStudy].[dbo].[MAP] where (ABS(SBP - [firstInnvSBP])/[firstInnvSBP] ) <0.8 and [firstInnvSBP]>0 and [nxtTimeDiffSecs]<=300 and sbp is not null)b On m.caseId=b.caseId and m.DT=b.DT; 
+Update Map Set map_Below20perc_Innov_Baseline=1 From map m Inner Join ( SELECT ABS(map - [firstInnvMap])/[firstInnvMap] as diffPerc,ABS(map - [firstInnvMap])as diffFromBaseline ,[map] ,[firstInnvMap], caseId,DT FROM [IHPStudy].[dbo].[MAP] where (ABS(map - [firstInnvMap])/[firstInnvMap] ) <0.8 and [firstInnvMap]>0 and [nxtTimeDiffSecs]<=300 and map is not null)b On m.caseId=b.caseId and m.DT=b.DT; 
